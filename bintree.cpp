@@ -11,14 +11,14 @@ struct Node {
 };
 Node* root = NULL;
 
-Node* createNode(int data) {
+Node* createNode(int data) { //createNode takes in the head and data, see which side to put in the node
     Node* newNode = new Node;
     newNode->data = data;
     newNode->left = newNode->right = NULL;
     return newNode;
 }
 
-Node* insert(Node* root, int data) {
+Node* insert(Node* root, int data) { //same as create node but the actual insertion process
     if (root == NULL)
         return createNode(data);
     if (data < root->data)
@@ -28,14 +28,14 @@ Node* insert(Node* root, int data) {
     return root;
 }
 
-Node* minValueNode(Node* node) {
+Node* minValueNode(Node* node) { //passes in the node to find left node
     Node* current = node;
     while (current && current->left != NULL)
         current = current->left;
     return current;
 }
 
-Node* deleteNode(Node* root, int data) {
+Node* deleteNode(Node* root, int data) { //delete node takes in the node and the data and creates 
   if (root == NULL) {
     return root;
   }
@@ -58,12 +58,12 @@ Node* deleteNode(Node* root, int data) {
   }
 Node* temp = minValueNode(root->right);
 root->data = temp->data;
-root->right = deleteNode(root->right, temp->data);
+ root->right = deleteNode(root->right, temp->data);//recursion to cotinue walking and deleting 
 }
 return root;
 }
 
-bool search(Node* root, int data) {
+bool search(Node* root, int data) {//search takes in the root and the data to walk thorugh and return a bool if true or false
   if (root == NULL)
     return false;
   if (root->data == data)
@@ -73,7 +73,7 @@ bool search(Node* root, int data) {
   return search(root->right, data);
 }
 
-void printInOrder(Node* root) {
+void printInOrder(Node* root) { //this is for printing the numbers before and after the enter
   if (root != NULL) {
     printInOrder(root->left);
     cout << root->data << " ";
@@ -81,7 +81,7 @@ void printInOrder(Node* root) {
   }
 }
 
-void printTree(Node* root, int space) {
+void printTree(Node* root, int space) { //this is for printing the tree after enter and deletion 
   if (root == NULL)
     return;
 
@@ -103,6 +103,7 @@ int main() {
   while (true) {
     // Node* root = NULL;
   char type;
+  cout << " type a(add), d(delete), s(search), q(quit)" << endl;
   cin >> type;
   
   if (type == 'a') {
@@ -150,6 +151,10 @@ int main() {
    // printInOrder(root);
    // cout << endl;
     printTree(root, 0);
+  }
+  else if (type == 'q') {
+    break;
+
   }
   // printInOrder(root);
   // cout << endl;
