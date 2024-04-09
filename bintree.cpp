@@ -97,70 +97,50 @@ void printTree(Node* root, int space) { //this is for printing the tree after en
 }
 
 int main() {
-  root = new Node;
-  root->data = 10;
+
+  int rootval;
+  cout << "what do you want as your root" << endl;
+  cin >> rootval;
+  root = insert(root, rootval);
   int searchNum;
   while (true) {
-    // Node* root = NULL;
   char type;
   cout << " type a(add), d(delete), s(search), q(quit)" << endl;
   cin >> type;
   
   if (type == 'a') {
-  int enterlength;
-  cin >> enterlength;
-  cout << "How many numbers do you want to enter?" << endl;
-  // Example usage
-  // root = new Node;
-  // root->data = 10;
-  // root = insert(root, 10);
-  int enter;
-  for(int i = 0; i < enterlength; i++) {
-    cin >> enter;
-    insert(root, enter);
+     int enterlength;
+     cout << "How many numbers do you want to enter?" << endl;
+     cin >> enterlength;
+     int enter;
+     for(int i = 0; i < enterlength; i++) {
+       cin >> enter;
+       insert(root, enter);
 
+     }
+     cout << "Inorder traversal of the binary search tree: ";
+     printInOrder(root);
+     cout << endl;
+     printTree(root, 0);
   }
-  /*  insert(root, 30);
-  insert(root, 20);
-  insert(root, 40);
-  insert(root, 70);
-  insert(root, 60);
-  insert(root, 80);*/
-   cout << "Inorder traversal of the binary search tree: ";
-  printInOrder(root);
-  cout << endl;
-  // printInOrder(root);
-  // cout << endl;
-  printTree(root, 0);
-  }
-  // cout << "Inorder traversal of the binary search tree: ";
-  // printInOrder(root);
-  // cout << endl;
-  
   else if (type == 's') {
     cout << "What number do you want to search for? " << endl;
     cin >> searchNum;
-  cout << "Searching: " << (search(root, searchNum) ? "Found" : "Not found") << endl;
+    cout << "Searching: " << (search(root, searchNum) ? "Found" : "Not found") << endl;
   }
   else if (type == 'd') {
     int deleten;
     cout << "what number do you want to delete" << endl;
     cin >> deleten;
     root = deleteNode(root, deleten);
-   // cout << "Inorder traversal after deleting 20: ";
-   // printInOrder(root);
-   // cout << endl;
     printTree(root, 0);
   }
   else if (type == 'q') {
     break;
 
   }
-  // printInOrder(root);
-  // cout << endl;
 
   cout << "Visual representation of the binary search tree:\n";
-  // printTree(root, 0);
   }
   return 0;
 }
