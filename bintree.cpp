@@ -98,13 +98,19 @@ void printTree(Node* root, int space) { //this is for printing the tree after en
 
 int main() {
 
-  int rootval;
+  /*int rootval;
   cout << "what do you want as your root" << endl;
   cin >> rootval;
-  root = insert(root, rootval);
+  root = insert(root, rootval);*/
   int searchNum;
   while (true) {
-  char type;
+    if (root == NULL) {
+      int rootval;
+      cout << "enter a root" << endl;
+      cin >> rootval;
+      root = insert(root, rootval);
+    }
+    char type;
   cout << " type a(add), d(delete), s(search), q(quit)" << endl;
   cin >> type;
   
